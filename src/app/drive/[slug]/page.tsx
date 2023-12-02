@@ -1,9 +1,14 @@
+/* eslint-disable react-hooks/rules-of-hooks */
 import { Layout } from "@/components";
 import { Info } from "@/components/drive";
 
-export async function generateMetadata() {
+interface MatadataType {
+  params: { slug: string };
+}
+
+export async function generateMetadata({ params }: MatadataType) {
   return {
-    title: "Drive | Kyi Mel Drive",
+    title: `${params.slug}`,
     descrption: "This is Drive Page",
   };
 }

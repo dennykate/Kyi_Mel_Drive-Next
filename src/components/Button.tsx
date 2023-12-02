@@ -1,12 +1,17 @@
-interface PropsType {
+interface PropsType extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   children: React.ReactNode;
 }
-
-const Button = ({ children }: PropsType) => {
+const Button = ({ children, disabled, ...props }: PropsType) => {
   return (
     <button
-      className="bg-gradient-to-r from-blue-600 to-indigo-800 px-10 py-3 text-xl text-white rounded-full 
-     overflow-hidden hover:from-indigo-800 hover:to-indigo-800 active:translate-y-1"
+      {...props}
+      disabled={disabled}
+      className={`bg-gradient-to-r from-blue-600 to-indigo-800 px-10 py-3 text-xl text-white rounded-full 
+     overflow-hidden  ${
+       !disabled
+         ? "hover:from-indigo-800 hover:to-indigo-800 active:translate-y-1 bg-opacity-100"
+         : "bg-opacity-70"
+     }`}
     >
       {children}
     </button>
