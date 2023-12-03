@@ -1,6 +1,7 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 import { Layout } from "@/components";
-import { Info } from "@/components/drive";
+import { Info, Video } from "@/components/drive";
+import slugParser from "@/utilities/slugParser";
 
 interface MatadataType {
   params: { slug: string };
@@ -8,15 +9,16 @@ interface MatadataType {
 
 export async function generateMetadata({ params }: MatadataType) {
   return {
-    title: `${params.slug}`,
+    title: `${slugParser(params.slug)}`,
     descrption: "This is Drive Page",
   };
 }
 
 const Drive = () => {
   return (
-    <Layout position="static">
-      <Info />
+    <Layout position="static" footer={false}>
+      {/* <Info /> */}
+      <Video />
     </Layout>
   );
 };

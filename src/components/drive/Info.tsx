@@ -1,16 +1,18 @@
 "use client";
 
-import slugParser from "@/utilities/slugParser";
-import { Button } from "..";
+// import slugParser from "@/utilities/slugParser";
 import { useCallback, useEffect, useState } from "react";
-import infoParas from "../constants/infoParas";
+
+import { Button } from "..";
 import { Banner } from "../adses";
+import infoParas from "../constants/infoParas";
+import scrollToElement from "@/utilities/scrollToElement";
 
 const Info = () => {
   const [count, setCount] = useState<number>(10);
   const [type, setType] = useState<string | null>("generate");
 
-  const counterGenerator = useCallback(() => {
+  useEffect(() => {
     const intervalId = setInterval(() => {
       setCount((prevCount: number) => {
         if (prevCount <= 0) {
@@ -19,15 +21,14 @@ const Info = () => {
         } else return prevCount - 1;
       });
     }, 1000);
-  }, [type]);
 
-  useEffect(() => {
-    counterGenerator();
-  }, [counterGenerator]);
+    return () => clearInterval(intervalId);
+  }, [type]);
 
   const onClickHandler = useCallback(() => {
     if (type === "generate") {
       setCount(10);
+      scrollToElement("banner-1");
       return setType("download");
     }
 
@@ -38,8 +39,8 @@ const Info = () => {
     <div className="min-h-screen bg-white py-2 pb-10">
       <div className="max-w-7xl mx-auto flex items-start">
         <div className="px-2 flex items-center flex-col gap-4 w-full  ">
-          <Banner />
-          <h6 className="text-3xl font-[500] text-black my-4">
+          <Banner id="banner-1" />
+          <h6 className="text-3xl font-[500] text-black my-4 text-center">
             Welcome to Kyi Mel Drive – Your Ultimate Movie Destination!
           </h6>
           <Button disabled={count !== 0} onClick={onClickHandler}>
