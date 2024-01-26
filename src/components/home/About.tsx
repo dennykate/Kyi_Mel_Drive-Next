@@ -4,9 +4,9 @@ import React from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
 
-import MovieStreaming from "@/assets/movie-streaming.gif";
-import MovieDownloading from "@/assets/movie-downloading.gif";
-import UnlimitedBandwidth from "@/assets/unlimited-bandwidth.gif";
+import MovieStreaming from "@/assets/streaming.svg";
+import MovieDownloading from "@/assets/download.svg";
+import UnlimitedBandwidth from "@/assets/upload.svg";
 
 const About = () => {
   return (
@@ -25,14 +25,16 @@ const About = () => {
           className="sm:w-1/2 w-full sm:h-96 h-auto"
         >
           <div
-            className="lg:text-5xl sm:text-3xl text-2xl text-black tracking-widest md:leading-[70px] lg:leading-[70px]
-          leading-[50px] font-black sm:text-start text-center"
+            className="lg:text-5xl sm:text-3xl text-2xl text-black tracking-wide md:leading-[70px] 
+            lg:leading-[70px] sm:mx-0 mx-4
+          font-black text-start"
           >
-            Unlimited Movies <br />
+            Unlimited Movies <br className="sm:block hidden" />
             <span className="text-[#db36a4]">Streaming</span>
           </div>
-          <div className="text-gray-600 sm:text-base text-sm sm:mt-5 mt-2 sm:mx-0 mx-4 tracking-wide">
-            Streaming online is completely 100% free <br />
+          <div className="text-gray-600 sm:text-base text-sm sm:mt-5 mt-2 sm:mx-0 mx-4 tracking-normal">
+            Streaming online is completely 100% free
+            <br className="sm:block hidden" />
             Dont waste time for downloading movies
           </div>
         </motion.div>
@@ -100,14 +102,17 @@ const About = () => {
           className="sm:w-1/2 w-full sm:h-96 h-auto"
         >
           <div
-            className="lg:text-5xl sm:text-3xl text-2xl text-black tracking-widest md:leading-[70px] lg:leading-[70px]
-          leading-[50px] font-black sm:text-start text-center"
+            className="lg:text-5xl sm:text-3xl text-2xl text-black tracking-wide md:leading-[70px] 
+            lg:leading-[70px] sm:mx-0 mx-4
+          font-black text-start"
           >
-            <span className="text-[#db36a4]">Download</span> Unlimited <br />
+            <span className="text-[#db36a4]">Download</span> Unlimited{" "}
+            <br className="sm:block hidden" />
             Movies
           </div>
-          <div className="text-gray-600 sm:text-base text-sm sm:mt-5 mt-2 sm:mx-0 mx-4 tracking-wide">
-            Store movies on your local devices with downloading movies <br />
+          <div className="text-gray-600 sm:text-base text-sm sm:mt-5 mt-2 sm:mx-0 mx-4 tracking-normal">
+            Store movies on your local devices with downloading movies{" "}
+            <br className="sm:block hidden" />
             We support both download and streaming
           </div>
         </motion.div>
@@ -127,14 +132,17 @@ const About = () => {
           className="sm:w-1/2 w-full sm:h-96 h-auto"
         >
           <div
-            className="lg:text-5xl sm:text-3xl text-2xl text-black tracking-widest md:leading-[70px] lg:leading-[70px]
-          leading-[50px] font-black sm:text-start text-center"
+            className="lg:text-5xl sm:text-3xl text-2xl text-black tracking-wide md:leading-[70px] 
+             lg:leading-[70px] sm:mx-0 mx-4
+           font-black text-start"
           >
-            <span className="text-[#db36a4]">Ultrafast</span> Download <br />
+            <span className="text-[#db36a4]">Ultrafast</span> Download{" "}
+            <br className="sm:block hidden" />
             Speed
           </div>
-          <div className="text-gray-600 sm:text-base text-sm sm:mt-5 mt-2 sm:mx-0 mx-4 tracking-wide">
-            You can download movies with ultrafast download speed <br />
+          <div className="text-gray-600 sm:text-base text-sm sm:mt-5 mt-2 sm:mx-0 mx-4 tracking-normal">
+            You can download movies with ultrafast download speed{" "}
+            <br className="sm:block hidden" />
             This is also completely unlimited bandwidth
           </div>
         </motion.div>

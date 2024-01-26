@@ -1,16 +1,30 @@
 "use client";
 
 // import slugParser from "@/utilities/slugParser";
-import { useCallback, useEffect, useState } from "react";
+import {
+  Dispatch,
+  SetStateAction,
+  useCallback,
+  useEffect,
+  useState,
+} from "react";
 
 import { Button } from "..";
-import { Banner } from "../adses";
+import { Banner, SideBanner } from "../adses";
 import infoParas from "../constants/infoParas";
 import scrollToElement from "@/utilities/scrollToElement";
 
-const Info = () => {
+interface PropsType {
+  setSectionType: Dispatch<SetStateAction<"video" | "info">>;
+}
+
+const Info = ({ setSectionType }: PropsType) => {
   const [count, setCount] = useState<number>(10);
   const [type, setType] = useState<string | null>("generate");
+
+  useEffect(() => {
+    scrollToElement("info");
+  }, []);
 
   useEffect(() => {
     const intervalId = setInterval(() => {
@@ -25,37 +39,37 @@ const Info = () => {
     return () => clearInterval(intervalId);
   }, [type]);
 
-  const onClickHandler = useCallback(() => {
-    if (type === "generate") {
-      setCount(10);
-      scrollToElement("banner-1");
-      return setType("download");
-    }
-
-    alert("download");
-  }, []);
-
   return (
-    <div className="min-h-screen bg-white py-2 pb-10">
+    <div id="info" className="min-h-screen bg-white py-2 pb-10">
       <div className="max-w-7xl mx-auto flex items-start">
         <div className="px-2 flex items-center flex-col gap-4 w-full  ">
-          <Banner id="banner-1" />
-          <h6 className="text-3xl font-[500] text-black my-4 text-center">
-            Welcome to Kyi Mel Drive – Your Ultimate Movie Destination!
-          </h6>
-          <Button disabled={count !== 0} onClick={onClickHandler}>
-            {count !== 0
-              ? type === "generate"
-                ? "Generating"
-                : "Getting Link"
-              : type === "generate"
-              ? "Get Link"
-              : "Download"}
-          </Button>
-          <div className="text-lg font-[500] text-black font-sans underline my-4">
-            Generating your link for you, just wait {count} second(s)...
+          {/* upper section */}
+          <div className="flex flex-col items-center w-full">
+            <Banner />
+            <h6 className="text-3xl font-[500] text-black my-4 text-center">
+              Welcome to Kyi Mel Drive – Your Ultimate Movie Destination!
+            </h6>
+            {type === "generate" && (
+              <>
+                <Button
+                  disabled={type !== "generate" || count !== 0}
+                  onClick={() => {
+                    setCount(10);
+                    setType("download");
+                    scrollToElement("lower-section");
+                  }}
+                >
+                  {count !== 0 ? "Generating" : "Get Link"}
+                </Button>
+                <p className="text-lg font-[500] text-black font-sans underline my-4">
+                  Generating your link for you, just wait {count} second(s)...
+                </p>
+              </>
+            )}
+
+            <Banner />
           </div>
-          <Banner />
+
           <div className="flex flex-col gap-3">
             {infoParas.map((para: string, index: number) => (
               <p
@@ -66,9 +80,31 @@ const Info = () => {
               </p>
             ))}
           </div>
+
+          {/* lower section */}
+          <div className="w-full flex flex-col items-center gap-2">
+            <Banner />
+            {type === "download" && (
+              <>
+                <Button
+                  disabled={count !== 0}
+                  onClick={() => setSectionType("video")}
+                  className="mt-6"
+                >
+                  {count !== 0 ? "Getting Link" : "Download"}
+                </Button>
+                <p className="text-lg font-[500] text-black font-sans underline my-4">
+                  Getting your link for you, just wait {count} second(s)...
+                </p>
+              </>
+            )}
+            <Banner />
+          </div>
+
+          <div id="lower-section" className="w-full h-[100px]" />
         </div>
 
-        <div className="min-w-[250px] h-[400px] bg-red-300"></div>
+        <SideBanner />
       </div>
     </div>
   );

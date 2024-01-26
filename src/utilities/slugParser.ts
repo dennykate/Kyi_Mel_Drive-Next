@@ -5,7 +5,9 @@ const slugParser = (inputString: string) => {
     (word) => word.charAt(0).toUpperCase() + word.slice(1)
   );
 
-  let resultString = capitalizedWords.join(" ");
+  let resultString = capitalizedWords
+    .slice(0, capitalizedWords.length - 1)
+    .join(" ");
 
   return resultString;
 };

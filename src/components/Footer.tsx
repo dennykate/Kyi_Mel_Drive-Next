@@ -5,21 +5,16 @@ import Image from "next/image";
 import Link from "next/link";
 import { BiCopyright } from "react-icons/bi";
 
-import FooterFilm from "@/assets/footer-film.gif";
+import Logo from "@/assets/icon.png";
 import Playstore from "@/assets/playstore.png";
 
 const Footer = () => {
   return (
     <div className="w-full h-auto bg-[#202a43] pt-10">
       <div className="max-w-4xl mx-auto h-full flex sm:flex-nowrap flex-wrap">
-        <div className="w-[300px] h-full flex justify-center items-center">
-          <div className="sm:w-[250px] sm:h-[250px] w-[200px] h-[200px]">
-            <Image
-              src={FooterFilm}
-              alt="footer-film"
-              width={500}
-              height={500}
-            />
+        <div className="w-[300px] h-full flex justify-center items-center pt-12">
+          <div className="sm:w-[150px]  w-[100px] ">
+            <Image src={Logo} alt="footer-film" width={500} height={500} />
           </div>
         </div>
 

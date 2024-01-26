@@ -13,7 +13,7 @@ const Navbar = () => {
   const [showNav, setShowNav] = useState<boolean>(false);
 
   return (
-    <div className="w-full sm:h-20 h-16 bg-[#0f2027] flex justify-between">
+    <div className="w-full sm:h-20 h-16 bg-[#202a43] flex justify-between">
       <div className="h-full sm:w-32 w-24 flex justify-center items-center">
         <div className="sm:w-[56px] sm:h-[56px] w-[45px] h-[45px]">
           <Link href={"/#home"}>

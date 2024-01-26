@@ -19,7 +19,7 @@ const Hero = () => {
       <div className="w-full h-auto flex sm:flex-row flex-col-reverse">
         <div className="sm:w-1/2 h-auto w-full sm:px-10 px-5  ">
           <div
-            className="lg:text-5xl sm:text-3xl text-3xl text-white tracking-widest md:leading-[70px] lg:leading-[70px]
+            className="lg:text-5xl sm:text-3xl text-3xl text-white tracking-wide md:leading-[70px] lg:leading-[70px]
           leading-[50px] font-black sm:text-start text-center"
           >
             Chilling With Our <br />
